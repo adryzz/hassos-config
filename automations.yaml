@@ -1,0 +1,16 @@
+- id: '1657744607603'
+  alias: New Automation
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: 34c754f2331011b2a32a20878833a817
+    entity_id: update.git_pull_update
+    domain: update
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.cpu_fan
+  mode: single

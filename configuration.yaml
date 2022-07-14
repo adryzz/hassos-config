@@ -1,0 +1,28 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+sensor:
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /config
+      - type: processor_use
+      - type: memory_use_percent
+      - type: processor_temperature
+      - type: last_boot
+
+switch:
+  - platform: rpi_gpio
+    switches:
+      - port: 18
+        name: "CPU Fan"
+        unique_id: "cpu_fan"
